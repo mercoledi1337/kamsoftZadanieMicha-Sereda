@@ -7,7 +7,7 @@
     }
     public class payload
     {
-        public contentTypes type;
+        public contentTypes type { get; set; }
         public string content { get; set; }
     }
 }

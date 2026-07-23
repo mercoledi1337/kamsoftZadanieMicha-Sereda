@@ -18,7 +18,7 @@
         "tags": [
           "WebApplication1"
         ],
-        "operationId": "GetWeatherForecast",
+        "operationId": "parse-content",
         "requestBody": {
           "content": {
             "application/json": {
@@ -39,9 +39,18 @@
   },
   "components": {
     "schemas": {
+      "contentTypes": {
+        "enum": [
+          "CSV",
+          "INTERNAL_JSON"
+        ]
+      },
       "payload": {
         "type": "object",
         "properties": {
+          "type": {
+            "$ref": "#/components/schemas/contentTypes"
+          },
           "content": {
             "type": "string"
           }
