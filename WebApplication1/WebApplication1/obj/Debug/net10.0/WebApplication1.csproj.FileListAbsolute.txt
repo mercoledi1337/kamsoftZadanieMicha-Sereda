@@ -33,3 +33,4 @@ D:\MS\WebApplication1\WebApplication1\obj\Debug\net10.0\refint\WebApplication1.d
 D:\MS\WebApplication1\WebApplication1\obj\Debug\net10.0\WebApplication1.pdb
 D:\MS\WebApplication1\WebApplication1\obj\Debug\net10.0\WebApplication1.genruntimeconfig.cache
 D:\MS\WebApplication1\WebApplication1\obj\Debug\net10.0\ref\WebApplication1.dll
+D:\MS\WebApplication1\WebApplication1\bin\Debug\net10.0\CsvHelper.dll

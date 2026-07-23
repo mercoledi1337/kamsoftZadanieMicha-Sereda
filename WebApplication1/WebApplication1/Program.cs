@@ -1,5 +1,6 @@
-using Microsoft.AspNetCore.Http.HttpResults;
-using System.Text.Json;
+
+using CsvHelper;
+using System.Globalization;
 using System.Text.Json.Serialization;
 using WebApplication1;
 
@@ -11,6 +12,8 @@ builder.Services.AddOpenApi();
 builder.Services.ConfigureHttpJsonOptions(options =>
 {
     options.SerializerOptions.Converters.Add(new JsonStringEnumConverter());
+
+    
 });
 builder.Services.Configure<Microsoft.AspNetCore.Mvc.JsonOptions>(options =>
 {
@@ -28,11 +31,18 @@ app.UseHttpsRedirection();
 
 app.MapPost("/api/v1/parse-content", (payload r) =>
 {
+    var resBase64 = System.Text.Encoding.UTF8.GetString(System.Convert.FromBase64String(r.content));
     if (r.type == contentTypes.CSV)
+    {
+        using var reader = new StringReader(resBase64);
+        using var csv = new CsvReader(reader, CultureInfo.InvariantCulture);
+
+        var records = csv.GetRecords<dynamic>().ToList();
         return Results.Ok();
+    }
     else if (r.type == contentTypes.INTERNAL_JSON)
         return Results.Ok();
-    else return TypedResults.BadRequest();
+    else return Results.BadRequest();
 })
 .WithName("parse-content");
 

@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "7UtCJ6Igc8w=",
+  "dgSpecHash": "mSTxWRzD4mI=",
   "success": true,
   "projectFilePath": "D:\\MS\\WebApplication1\\WebApplication1\\WebApplication1.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\Ops103\\.nuget\\packages\\csvhelper\\33.1.0\\csvhelper.33.1.0.nupkg.sha512",
     "C:\\Users\\Ops103\\.nuget\\packages\\microsoft.aspnetcore.openapi\\10.0.10\\microsoft.aspnetcore.openapi.10.0.10.nupkg.sha512",
     "C:\\Users\\Ops103\\.nuget\\packages\\microsoft.openapi\\2.0.0\\microsoft.openapi.2.0.0.nupkg.sha512"
   ],
