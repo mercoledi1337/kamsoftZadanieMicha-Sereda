@@ -1,0 +1,20 @@
+{
+  "version": 2,
+  "dgSpecHash": "dx3aO1bx5WE=",
+  "success": false,
+  "projectFilePath": "D:\\MS\\zadanieMS\\zadanieMS\\zadanieMS.csproj",
+  "expectedPackageFiles": [],
+  "logs": [
+    {
+      "code": "NU1100",
+      "level": "Error",
+      "message": "Unable to resolve 'Microsoft.AspNetCore.OpenApi (>= 10.0.9)' for 'net10.0'. PackageSourceMapping is enabled, the following source(s) were not considered: C:\\Program Files\\dotnet\\library-packs, Microsoft Visual Studio Offline Packages, nuget.org.",
+      "projectPath": "D:\\MS\\zadanieMS\\zadanieMS\\zadanieMS.csproj",
+      "filePath": "D:\\MS\\zadanieMS\\zadanieMS\\zadanieMS.csproj",
+      "libraryId": "Microsoft.AspNetCore.OpenApi",
+      "targetGraphs": [
+        "net10.0"
+      ]
+    }
+  ]
+}
