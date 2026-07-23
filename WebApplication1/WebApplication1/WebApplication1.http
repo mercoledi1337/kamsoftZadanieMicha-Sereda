@@ -4,7 +4,7 @@ POST {{WebApplication1_HostAddress}}/api/v1/parse-content
 Content-Type: application/json
 
   {
-    "type":"CSV",
-    "content":"MSwyLDMsNA0KNiw1LDYsNw0KNSw1LDUsNQ=="
+    "type":"INTERNAL_JSON",
+    "content":"ew0KIk5hbWUiOiJ0ZXN0MTIzIg0KfQ=="
   }
 ###

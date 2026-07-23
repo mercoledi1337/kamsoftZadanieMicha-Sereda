@@ -1,19 +1,15 @@
-
 using CsvHelper;
 using System.Globalization;
+using System.Text.Json;
 using System.Text.Json.Serialization;
 using WebApplication1;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
-// Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddOpenApi();
 builder.Services.ConfigureHttpJsonOptions(options =>
 {
     options.SerializerOptions.Converters.Add(new JsonStringEnumConverter());
-
-    
 });
 builder.Services.Configure<Microsoft.AspNetCore.Mvc.JsonOptions>(options =>
 {
@@ -38,17 +34,25 @@ app.MapPost("/api/v1/parse-content", (payload r) =>
         using var csv = new CsvReader(reader, CultureInfo.InvariantCulture);
 
         var records = csv.GetRecords<dynamic>().ToList();
-        return Results.Ok();
+        var data = records
+                .Select(rec => ((IDictionary<string, object>)rec)
+                    .ToDictionary(kv => kv.Key, kv => (object?)kv.Value))
+                .ToList();
+        return Results.Ok(new ParseResult(true, data.Count, data));
     }
     else if (r.type == contentTypes.INTERNAL_JSON)
-        return Results.Ok();
+    {
+        var json = JsonSerializer.Deserialize<testJsonModel>(resBase64);
+        var asDict = JsonSerializer.Deserialize<Dictionary<string, object?>>(
+                JsonSerializer.Serialize(json));
+
+        var data = new List<Dictionary<string, object?>> { asDict! };
+
+        return Results.Ok(new ParseResult(true, data.Count, data));
+
+    }
     else return Results.BadRequest();
 })
 .WithName("parse-content");
 
 app.Run();
-
-internal record WeatherForecast(DateOnly Date, int TemperatureC, string? Summary)
-{
-    public int TemperatureF => 32 + (int)(TemperatureC / 0.5556);
-}
