@@ -1,0 +1,10 @@
+@WebApplication1_HostAddress = https://localhost:7115
+
+POST {{WebApplication1_HostAddress}}/api/v1/parse-content
+Content-Type: application/json
+
+  {
+    "type":"test",
+    "content":"true"
+  }
+###
